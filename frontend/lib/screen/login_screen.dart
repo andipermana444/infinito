@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dashboard.dart';
 
 class MyLoginForm extends StatefulWidget {
   const MyLoginForm({super.key});
@@ -113,6 +114,7 @@ class _MyLoginFormState extends State<MyLoginForm> {
                 String password = _passwordController.text;
                 // You can add validation and action here
                 print('Email: $email, Password: $password');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
               },
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 20),
