@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 
+// dashboard tidak perlu statefulwidget ubah ke stateless
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -14,7 +17,7 @@ class DashBoard extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: const EdgeInsets.all(50),
+        margin: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,16 +68,15 @@ class DashBoard extends State<Dashboard> {
             _prodTheWeek(),
             const SizedBox(height: 50),
             const Text('Need Stock Update',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 24,
-                letterSpacing: 0,
-                fontWeight: FontWeight.normal,
-                color: Colors.grey,
-                height: 1,
-              )
-            ),
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 24,
+                  letterSpacing: 0,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.grey,
+                  height: 1,
+                )),
             const SizedBox(height: 20),
             listStock('Oreo'),
           ],
@@ -140,6 +142,7 @@ class DashBoard extends State<Dashboard> {
       ),
     );
   }
+
   Widget _prodTheWeek() {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -179,13 +182,13 @@ class DashBoard extends State<Dashboard> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 168, 13, 207),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 100,
-                      width: 100,
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 168, 13, 207),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    height: 100,
+                    width: 100,
                   ),
                   const SizedBox(height: 10),
                   const Text("Product")
@@ -198,7 +201,7 @@ class DashBoard extends State<Dashboard> {
           ),
           Expanded(
               child: Container(
-              child: const Column(
+            child: const Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -220,7 +223,7 @@ class DashBoard extends State<Dashboard> {
                 ),
                 OutlinedButton(
                     onPressed: null,
-                    child: const Text(
+                    child: Text(
                       "Detail",
                       style: TextStyle(color: Colors.white),
                     ))
@@ -231,31 +234,29 @@ class DashBoard extends State<Dashboard> {
       ),
     );
   }
-  Widget listStock(String prodName){
+
+  Widget listStock(String prodName) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-            ),
-          ],
-        ),
-        child: const Row(
-          children: [
-            Icon(Icons.food_bank_rounded), 
-            SizedBox(width: 8),
-            Text('Produk 1'),
-            Spacer(), 
-            Icon(Icons.edit),
-          ]
-        ),
-      )
-    );
+        child: Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 5,
+          ),
+        ],
+      ),
+      child: const Row(children: [
+        Icon(Icons.food_bank_rounded),
+        SizedBox(width: 8),
+        Text('Produk 1'),
+        Spacer(),
+        Icon(Icons.edit),
+      ]),
+    ));
   }
 }

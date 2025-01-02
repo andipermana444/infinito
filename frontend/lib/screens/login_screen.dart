@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
-import 'dashboard.dart';
+import 'dashboardcopy.dart';
 
 class MyLoginForm extends StatefulWidget {
   const MyLoginForm({super.key});
@@ -112,16 +114,20 @@ class _MyLoginFormState extends State<MyLoginForm> {
                 // Action for login button
                 String email = _emailController.text;
                 String password = _passwordController.text;
-                // You can add validation and action here
+                // validation and action here
                 print('Email: $email, Password: $password');
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DashboardCopy()));
               },
               style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  backgroundColor: const Color.fromARGB(255, 209, 2, 255)),
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                backgroundColor: const Color.fromARGB(255, 0, 0, 22),
+              ),
               child: const Text(
                 'Login',
                 style: TextStyle(
