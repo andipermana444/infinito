@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/dashboardcopy.dart';
 
-class productManagement extends StatelessWidget {
-  const productManagement({super.key});
+class Supplier extends StatelessWidget {
+  const Supplier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class productManagement extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: (){
-                      print('Tambah produk');
+                      print('Tambah Supplier');
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 20),
@@ -32,7 +32,7 @@ class productManagement extends StatelessWidget {
                       backgroundColor: const Color.fromARGB(255, 0, 0, 22),
                     ),
                     child: const Text(
-                      'Tambah Produk',
+                      'Tambah Supplier',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -49,7 +49,7 @@ class productManagement extends StatelessWidget {
                       const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: 'Search foods, snacks, or drinks',
+                            hintText: 'Search products suppliers',
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -68,7 +68,7 @@ class productManagement extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Label(label: 'Menampilkan 43 Produk'),
+                const Label(label: 'Menampilkan beberapa supplier'),
                 const SizedBox(height: 20),
                 Expanded(
                   child: SingleChildScrollView(
@@ -113,23 +113,9 @@ class productManagement extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text("Oreo"),
-                                          Spacer(),
-                                          Text("Rp.3000")
-                                        ],
-                                      ),
+                                      Text("Iyan Furryan"),
                                       Label(label: "Snack"),
                                       SizedBox(height: 10),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: LinearProgressIndicator(
-                                          value: 0.8,
-                                          backgroundColor: Colors.grey,
-                                          color: Colors.blue,
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 )
