@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/dashboardcopy.dart';
 
-class productManagement extends StatelessWidget {
-  const productManagement({super.key});
+class ProductManagement extends StatelessWidget {
+  const ProductManagement({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class productManagement extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () {
                       print('Tambah produk');
                     },
                     style: ElevatedButton.styleFrom(
@@ -62,7 +62,7 @@ class productManagement extends StatelessWidget {
                         child: const Padding(
                           padding: EdgeInsets.all(11.0),
                           child: Icon(Icons.search),
-                          ),
+                        ),
                       ),
                     ],
                   ),

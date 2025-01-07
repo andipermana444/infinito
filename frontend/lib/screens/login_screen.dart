@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'dashboardcopy.dart';
+import 'dashboard.dart';
 
 class MyLoginForm extends StatefulWidget {
   const MyLoginForm({super.key});
@@ -116,10 +116,8 @@ class _MyLoginFormState extends State<MyLoginForm> {
                 String password = _passwordController.text;
                 // validation and action here
                 print('Email: $email, Password: $password');
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const DashboardCopy()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()));
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 20),
