@@ -79,12 +79,12 @@ switch ($method) {
             break;
         } else {
             // INI CODE UNTUK CREATE PRODUCTS
-            $products->supplier_id = $_POST["supplier_id"];
-            $products->name = $_POST["name"];
-            $products->category = $_POST["category"];
-            $products->price = $_POST["price"];
-            $products->stock = $_POST["stock"];
-            $products->description = $_POST["description"];
+            $products->supplier_id = $_POST["supplier_id"] ?? 0;
+            $products->name = $_POST["name"] ?? "";
+            $products->category = $_POST["category"] ?? "";
+            $products->price = $_POST["price"] ?? 0 ;
+            $products->stock = $_POST["stock"] ?? 0;
+            $products->description = $_POST["description"] ?? "";
             if (isset($_FILES["image"])) {
                 $image = $_FILES["image"];
                 $target_folder = "uploads/products/";
@@ -98,11 +98,11 @@ switch ($method) {
                 }
             } else {
                 if ($products->category == "Food") {
-                    $products->image = "http://localhost/infinito/backend/uploads/food.png";
+                    $products->image = "http://localhost/infinito/backend/uploads/products/food.png";
                 } else if ($products->category == "Drink") {
-                    $products->image = "http://localhost/infinito/backend/uploads/drink.png";
+                    $products->image = "http://localhost/infinito/backend/uploads/products/drink.png";
                 } else {
-                    $products->image = "http://localhost/infinito/backend/uploads/snack.png";
+                    $products->image = "http://localhost/infinito/backend/uploads/products/snack.png";
                 }
             }
             if ($products->createProduct()) {

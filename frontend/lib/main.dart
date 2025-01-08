@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/Account.dart';
 import 'package:frontend/screens/AddProductForm.dart';
+import 'package:frontend/screens/UserManagement.dart';
 import 'package:frontend/screens/Transaction.dart';
 import 'package:frontend/screens/ProductManagement.dart';
 import 'package:frontend/screens/Supplier.dart';
@@ -33,8 +34,8 @@ class _MainScreenState extends State<MainScreen> {
     const ProductManagement(),
     const Supplier(),
     const Transaction(),
-    AddProductForm(),
-    // const UserManagement(),
+    // AddProductForm(),
+    const UserManagement(),
     const Account(),
   ];
 

@@ -1,14 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:frontend/components/Label.dart';
+// ignore_for_file: library_private_types_in_public_api
 
-class ProductManagement extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:frontend/components/ProductList.dart';
+import 'package:frontend/services/product_service.dart';
+import 'package:frontend/models/product_model.dart';
+import 'package:frontend/screens/AddProductForm.dart';
+
+class ProductManagement extends StatefulWidget {
   const ProductManagement({super.key});
+
+  @override
+  _ProductManagementState createState() => _ProductManagementState();
+}
+
+class _ProductManagementState extends State<ProductManagement> {
+  late Future<List<Product>> futureProducts;
+
+  @override
+  void initState() {
+    super.initState();
+    futureProducts = ProductService().fetchProducts();
+    print(futureProducts);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -18,7 +37,11 @@ class ProductManagement extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  print('Tambah produk');
+                  // Navigasi ke halaman tambah product
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddProductForm()));
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -76,82 +99,23 @@ class ProductManagement extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Label(label: 'Menampilkan 43 Produk'),
-            const SizedBox(height: 20),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: List.generate(12, (index) {
-                    return SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        margin: const EdgeInsets.only(bottom: 16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 6,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                          border: Border.all(
-                            color: Colors.black26,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            const Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Oreo",
-                                        style: TextStyle(
-                                          color: Color.fromARGB(255, 0, 0, 22),
-                                          fontWeight: FontWeight.bold
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Text("Rp.3000")
-                                    ],
-                                  ),
-                                  Label(label: "Snack"),
-                                  SizedBox(height: 10),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: LinearProgressIndicator(
-                                      value: 0.8,
-                                      backgroundColor: Colors.grey,
-                                      color: Colors.blue,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-                ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FutureBuilder<List<Product>>(
+                future: futureProducts,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (snapshot.hasData) {
+                    List<Product> products = snapshot.data!;
+
+                    return ProductList(products: products);
+                  } else {
+                    return Center(child: Text('No data available'));
+                  }
+                },
               ),
             ),
           ],

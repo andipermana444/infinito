@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/MyNotification.dart';
 import 'package:frontend/components/Label.dart';
 
 class Dashboard extends StatelessWidget {

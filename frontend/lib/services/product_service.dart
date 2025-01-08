@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:frontend/models/product_model.dart'; // Import file model Product
@@ -20,8 +19,7 @@ class ProductService {
   }
 
   Future<Product> addProduct(Product product) async {
-    var uri =
-        Uri.parse('$baseUrl/products'); // URL untuk menambahkan produk baru
+    var uri = Uri.parse(baseUrl); // URL untuk menambahkan produk baru
     Dio dio = Dio();
 
     FormData formData = FormData.fromMap({
